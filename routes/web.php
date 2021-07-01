@@ -24,12 +24,14 @@ Route::get('/', function () {
 //Route::group(['prefix' => 'hocvien'], function () {
 Route::get('themhocvien', 'HocVienController@getThem');
 Route::get('danhsachhocvien', 'HocVienController@getDanhSach');
-// CURD
+
 // get Location
 Route::get('location/{id_TINH}', 'LocationController@load');
 
+// get Danh sach lop
+Route::get('danhsachlop/{id_nganhnghedaotao}', 'LopController@getAllByNNDT');
 
-
+// CURD
 Route::get('xoa/{id}', 'HocVienController@getXoa');
 Route::get('hocvien/{id}', 'HocVienController@getByID');
 Route::post('hocvien/edit', 'HocVienController@edit');

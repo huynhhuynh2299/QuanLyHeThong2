@@ -29,208 +29,224 @@
       <!-- sua loi 419 -->
       {{csrf_field()}}
       <div class="card-body">
-        <input type="hidden" class="form-control" id="maso" name="maso" placeholder="">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Họ tên học viên</label>
-          <input type="text" class="form-control" id="tenhv" name="tenhv" placeholder="Tên học viên">
-        </div>
         <div class="form-row">
-
-          <div class="form-group col-md-6">
-            <label for="exampleInputEmail1">CMND/CCCD:</label>
-            <input type="text" class="form-control" id="cmnd" name="cmnd" placeholder="CMND/CCCD">
+          <div class="form-group col-md-8">
+            <label for="HV_HOTEN_ADD">Họ tên học viên</label>
+            <input type="text" class="form-control" id="HV_HOTEN_ADD" name="HV_HOTEN" placeholder="Tên học viên">
           </div>
-          <div class="form-group col-md-6">
-            <label for="exampleInputEmail1">Dân tộc:</label>
-            <input type="text" class="form-control" id="dantoc" name="dantoc" placeholder="Kinh">
+          <div class="form-group col-md-4">
+            <label for="HV_DANTOC_ADD">Dân tộc:</label>
+            <input type="text" class="form-control" id="HV_DANTOC_ADD" name="HV_DANTOC" placeholder="Kinh">
           </div>
         </div>
         <div class="form-row">
-
-          <div class="form-group col-md-6">
-            <label for="exampleInputEmail1">Trình độ học vấn:</label>
+          <div class="form-group col-md-4">
+            <label for="HV_CMND_ADD">CMND/CCCD:</label>
+            <input type="text" class="form-control" id="HV_CMND_ADD" name="HV_CMND" placeholder="CMND/CCCD">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="HV_SDT_ADD">Số điện thoại:</label>
             <div class="input-group">
-              <select class="form-control" id="hocvan" name="hocvan">
-                <option>Trung học cơ sở</option>
-                <option>Trung học phổ thông</option>
-                <option>Cao đẳng</option>
-                <option>Trung cấp</option>
-                <option>Đại học</option>
-              </select>
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+              </div>
+              <input type="text" class="form-control" id="HV_SDT_ADD" name="HV_SDT" data-inputmask='"mask": "(999) 999-9999"' data-mask>
             </div>
           </div>
-          <div class="form-group col-md-6">
-            <label for="exampleInputEmail1">Nghề nghiệp:</label>
-            <input type="text" class="form-control" id="nghenghiep" name="nghenghiep" placeholder="Nghề nghiệp, nơi làm việc hiện tại">
+          <div class="form-group col-md-4">
+            <label for="id_DOITUONG_ADD">Mã đối tượng:</label>
+            <select class="form-control" id="id_DOITUONG_ADD" name="id_DOITUONG">
+              @foreach ($doituong_all as $doituong)
+              <option value="{{ $doituong -> id}}">{{ $doituong -> DT_TEN }}</option>
+              @endforeach
+            </select>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
 
-            <label for="exampleInputEmail1">Ngày sinh:</label>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="HV_NGAYSINH_ADD">Ngày sinh:</label>
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
               </div>
-              <input type="date" class="form-control" data-inputmask-alias="datetime" id="ngaysinh" name="ngaysinh" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+              <input type="date" class="form-control" data-inputmask-alias="datetime" id="HV_NGAYSINH_ADD" name="HV_NGAYSINH" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
             </div>
           </div>
 
-          <div class="form-group col-md-6">
-
-            <label for="exampleInputEmail1">Giới tính:</label>
+          <div class="form-group col-md-4">
+            <label for="HV_GIOITINH_ADD">Giới tính:</label>
             <div class="input-group">
-              <select class="form-control" id="gioitinh" name="gioitinh">
+              <select class="form-control" id="HV_GIOITINH_ADD" name="HV_GIOITINH">
                 <option>Nam</option>
                 <option>Nữ</option>
                 <option>Khác</option>
               </select>
             </div>
           </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label>Số điện thoại:</label>
+          <div class="form-group col-md-4">
+            <label for="HV_HOCVAN_ADD">Trình độ học vấn:</label>
             <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-phone"></i></span>
-              </div>
-              <input type="text" class="form-control" id="sodienthoai" name="sodienthoai" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+              <select class="form-control" id="HV_HOCVAN_ADD" name="HV_HOCVAN">
+                <option>1/12</option>
+                <option>2/12</option>
+                <option>3/12</option>
+                <option>4/12</option>
+                <option>5/12</option>
+                <option>6/12</option>
+                <option>7/12</option>
+                <option>8/12</option>
+                <option>9/12</option>
+                <option>10/12</option>
+                <option>11/12</option>
+                <option>12/12</option>
+                <option>Cao đẳng</option>
+              </select>
             </div>
           </div>
-          <div class="form-group col-md-6">
-            <label for="exampleInputEmail1">Mã đối tượng:</label>
-            <select class="form-control" id="madoituong" name="madoituong">
-              @foreach ($doituong_all as $doituong)
-              <option value="{{ $doituong -> DT_MASO}}">{{ $doituong -> DT_TEN }}</option>
-              @endforeach
-            </select>
+        </div>
+        <label for="CV_TEN_ADD">Nghề nghiệp:</label>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <span>Công việc:</span>
+            <input type="text" class="form-control" id="CV_TEN_ADD" name="CV_TEN" placeholder="Nghề nghiệp hiện tại">
+          </div>
+          <div class="form-group col-md-4">
+            <span>Nơi làm việc:</span>
+            <input type="text" class="form-control" id="CV_NOILAM_ADD" name="CV_NOILAM" placeholder="Nơi làm việc hiện tại">
+          </div>
+          <div class="form-group col-md-4">
+            <span>Thời gian nhận việc:</span>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+              </div>
+              <input type="date" class="form-control" data-inputmask-alias="datetime" id="CV_TGNHAN_ADD" name="CV_TGNHAN" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+            </div>
           </div>
         </div>
-        <label for="exampleInputEmail1">Nguyên quán:</label>
+        <div class="form-row">
+
+        </div>
+        <label for="HV_NGUYENQUAN">Nguyên quán:</label>
         <div class="form-row">
           <div class="form-group col-md-4">
             <span>Tỉnh/Thành Phố</span>
-            <select class="form-control js_nguyenquan_tinh" id="nguyenquan_tinh" name="nguyenquan_tinh" placeholder="Tỉnh/Thành Phố">
-              <option>Mời chọn tỉnh/thành phố</option>
+            <select class="form-control js_nguyenquan_tinh" id="nguyenquan_tinh_EDIT" name="NGUYENQUAN_TINH" placeholder="Tỉnh/Thành Phố">
+              <option value="0">Mời chọn tỉnh/thành phố</option>
+
               @foreach ($tinh_all as $tinh)
-              <option>{{ $tinh -> TEN_TINH }}</option>
+              <option value="{{ $tinh -> id }}">{{ $tinh -> TEN_TINH }}</option>
               @endforeach
             </select>
           </div>
           <div class="form-group col-md-4">
             <span>Quận/Huyện</span>
-            <select class="form-control js_nguyenquan_huyen" id="nguyenquan_huyen" name="nguyenquan_huyen" placeholder="Quận/Huyên">
-              <option>Mời chọn quận/huyện</option>
+            <select class="form-control js_nguyenquan_huyen" id="nguyenquan_huyen_EDIT" name="NGUYENQUAN_HUYEN" placeholder="Quận/Huyên">
+              <option value="0">Mời chọn quận/huyện</option>
+
               @foreach ($huyen_all as $huyen)
-              <option>{{ $huyen -> TEN_HUYEN }}</option>
+              <option value="{{ $huyen -> id }}">{{ $huyen -> TEN_HUYEN }}</option>
               @endforeach
             </select>
           </div>
           <div class="form-group col-md-4">
             <span>Phường/Xã</span>
-            <select class="form-control" id="nguyenquan_xa" name="nguyenquan_xa" placeholder="Phường/Xã">
-              <option>Mời chọn phường/xã</option>
+            <select class="form-control" id="nguyenquan_xa_EDIT" name="NGUYENQUAN_XA" placeholder="Phường/Xã">
+              <option value="0">Mời chọn phường/xã</option>
+
               @foreach ($xa_all as $xa)
-              <option>{{ $xa -> TEN_XA }}</option>
+              <option value="{{ $xa-> id }}">{{ $xa -> TEN_XA }}</option>
               @endforeach
             </select>
           </div>
         </div>
-        <label for="exampleInputEmail1">Hộ khẩu thường trú</label>
+        <div class="form-group">
+          <span>Địa chỉ</span>
+          <input type="text" class="form-control" id="HV_DIACHI_NQ_ADD" name="HV_DIACHI_NQ" placeholder="Địa chỉ">
+        </div>
+        <label for="HV_THUONGTRU">Hộ khẩu thường trú</label>
         <div class="form-row">
           <div class="form-group col-md-4">
             <span>Tỉnh/Thành Phố</span>
-            <select class="form-control js_thuongtru_tinh" id="thuongtru_tinh" name="tinh" placeholder="Tỉnh/Thành Phố">
-              <option>Mời chọn tỉnh/thành phố</option>
+            <select class="form-control js_thuongtru_tinh" id="thuongtru_tinh_EDIT" name="THUONGTRU_TINH" placeholder="Tỉnh/Thành Phố">
+              <option value="0">Mời chọn tỉnh/thành phố</option>
               @foreach ($tinh_all as $tinh)
-              <option>{{ $tinh -> TEN_TINH }}</option>
+              <option value="{{ $tinh-> id }}">{{ $tinh -> TEN_TINH }}</option>
               @endforeach
             </select>
           </div>
           <div class="form-group col-md-4">
             <span>Quận/Huyện</span>
-            <select class="form-control js_thuongtru_huyen" id="thuongtru_huyen" name="huyen" placeholder="Quận/Huyên">
-              <option>Mời chọn quận/huyện</option>
+            <select class="form-control js_thuongtru_huyen" id="thuongtru_huyen_EDIT" name="THUONGTRU_HUYEN" placeholder="Quận/Huyên">
+              <option value="0">Mời chọn quận/huyện</option>
+              @foreach ($huyen_all as $huyen)
+              <option value="{{ $huyen-> id }}">{{ $huyen -> TEN_HUYEN }}</option>
+              @endforeach
             </select>
           </div>
           <div class="form-group col-md-4">
             <span>Phường/Xã</span>
-            <select class="form-control" id="thuongtru_xa" name="xa" placeholder="Phường/Xã">
-              <option>Mời chọn phường/xã</option>
+            <select class="form-control" id="thuongtru_xa_EDIT" name="THUONGTRU_XA" placeholder="Phường/Xã">
+              <option value="0">Mời chọn phường/xã</option>
+              @foreach ($xa_all as $xa)
+              <option value="{{ $xa-> id }}">{{ $xa -> TEN_XA }}</option>
+              @endforeach
             </select>
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleFormControlTextarea1">Thông tin người thân:</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+          <span>Địa chỉ</span>
+          <input type="text" class="form-control" id="HV_DIACHI_TT_ADD" name="HV_DIACHI_TT" placeholder="Địa chỉ">
+        </div>
+        <label for="NQ_HOTEN_ADD">Thông tin người thân:</label>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <span>Tên người thân:</span>
+            <input type="text" class="form-control" id="NQ_HOTEN_ADD" name="NQ_HOTEN" placeholder="Họ tên người thân">
+          </div>
+          <div class="form-group col-md-4">
+            <span>Số điện thoại:</span>
+            <input type="text" class="form-control" id="NQ_SDT_ADD" name="NQ_SDT" placeholder="Số điện thoại người thân">
+          </div>
+          <div class="form-group col-md-4">
+            <span>Địa chỉ:</span>
+            <input type="text" class="form-control" id="NQ_DIACHI_ADD" name="NQ_DIACHI" placeholder="Địa chỉ người thân">
+          </div>
         </div>
         <div class="form-group">
-          <label for="exampleFormControlTextarea1">Lịch sử đào tạo:</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Thông tin đào tạo:</label>
+          <label>Thông tin đào tạo:</label>
         </div>
         <hr>
         <div class="form-row">
-          <div class="form-group col-md-4">
-            <label for="exampleInputEmail1">Ngành nghề đào tạo:</label>
+          <div class="form-group col-md-6">
+            <label for="NGANHDAOTAO">Ngành nghề đào tạo:</label>
             <div class="input-group">
-              <select class="form-control" id="nganhdaotao" name="nganhdaotao">
-                <option>.</option>
+              <select class="form-control js_nganhnghedaotao" id="NGANHDAOTAO_ADD" name="NGANHDAOTAO">
+                <option value="0">Chọn ngành đào tạo</option>
+                @foreach($nganhnghedaotao_all as $nganhnghedaotao)
+                <option value="{{ $nganhnghedaotao-> id}}">{{ $nganhnghedaotao->NN_TEN }}</option>
+                @endforeach
               </select>
             </div>
           </div>
-          <div class="form-group col-md-4">
-            <label for="exampleInputEmail1">Địa điểm đào tạo:</label>
+          <div class="form-group col-md-6">
+            <label for="LOP_ADD">Danh sách lớp học:</label>
             <div class="input-group">
-              <select class="form-control" id="diadiem" name="diadiem">
-                <option>.</option>
+              <select class="form-control js_danhsachlop" id="LOP_ADD" name="LOP">
               </select>
-            </div>
-          </div>
-          <div class="form-group col-md-4">
-            <label for="exampleInputEmail1">Thời gian khóa học(ngày):</label>
-            <div class="input-group">
-              <input type="text" class="form-control" id="thoigianhoc" name="thoigianhoc">
-            </div>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="exampleInputEmail1">Ngày bắt đầu:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-              </div>
-              <input type="date" class="form-control" data-inputmask-alias="datetime" id="ngaybatdau" name="ngaybatdau" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
-            </div>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="exampleInputEmail1">Ngày kết thúc:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-              </div>
-              <input type="date" class="form-control" data-inputmask-alias="datetime" id="ngayketthuc" name="ngayketthuc" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
             </div>
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleFormControlTextarea1">Chuẩn đầu ra(kiến thức, kỹ năng, thái độ):</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Dự kiến nơi làm việc sau khóa học:</label>
+          <label for="HV_NOILAMVIECDUKIEN">Dự kiến nơi làm việc sau khóa học:</label>
           <div class="input-group">
-            <input type="text" class="form-control" id="noilamviec" name="noilamviec">
+            <input type="text" class="form-control" id="HV_NOILAMVIECDUKIEN_ADD" name="HV_NOILAMVIECDUKIEN">
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary">Thêm</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
       </div>
 
   </form>

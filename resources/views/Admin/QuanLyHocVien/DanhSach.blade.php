@@ -25,63 +25,63 @@
 
   <div class="card">
     <div class="col-sm-4">
-  <div class="form-row">
-                 
-                  <div class="form-group col-md-9" >
-                    <label for="exampleInputEmail1" >Lớp học - Khóa học</label>
-                      <form action="hocvientaods" method="POST" enctype="multipart/form-data">
-                        {{csrf_field()}}
-                     <select class="select2" style="width: 340px;" type="submit" name="id_lop">
+      <div class="form-row">
+
+        <div class="form-group col-md-9">
+          <label for="exampleInputEmail1">Lớp học - Khóa học</label>
+          <form action="hocvientaods" method="POST" enctype="multipart/form-data">
+            {{csrf_field()}}
+            <select class="select2" style="width: 340px;" type="submit" name="id_lop">
 
 
-                     @foreach($thuockhoahoc as $kh)
-                       @foreach($thuoc_lop as $tl)
-                         @if($tl->id_KHOAHOC == $kh->id)
-                        <option selected value="{{$tl->id}}" >{{$tl->L_TEN}} - {{$kh->KH_MASO}}</option>
-                        @endif
-                         @endforeach
-                         @endforeach
-                        </select>
-                        <button id="add-new-event" type="submit" class="btn btn-primary" style="margin-top: -65px; margin-left: 342px; width: 150px;" >Tạo danh sách</button>
-                      </form>
-                   </div>
+              @foreach($thuockhoahoc as $kh)
+              @foreach($thuoc_lop as $tl)
+              @if($tl->id_KHOAHOC == $kh->id)
+              <option selected value="{{$tl->id}}">{{$tl->L_TEN}} - {{$kh->KH_MASO}}</option>
+              @endif
+              @endforeach
+              @endforeach
+            </select>
+            <button id="add-new-event" type="submit" class="btn btn-primary" style="margin-top: -65px; margin-left: 342px; width: 150px;">Tạo danh sách</button>
+          </form>
+        </div>
 
-                </div>
-              </div>
+      </div>
+    </div>
     <!-- /.card-header -->
     <div class="card-body">
       <table id="example1" class="table table-bordered table-striped">
         <thead>
-           <tr>
-                    <th>STT</th>
-                    <th>HỌ VÀ TÊN</th>
-                    <th>GIỚI TÍNH</th>
-                    <th>NĂM SINH</th>
-                    <th>ĐỊA CHỈ THƯỜNG TRÚ</th>
-                    <th>CHỨC NĂNG</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                     @foreach($quanlyhocvien as $hv)
-                   <tr>
-                    <td>
-                      {{
+          <tr>
+            <th>STT</th>
+            <th>HỌ VÀ TÊN</th>
+            <th>GIỚI TÍNH</th>
+            <th>NĂM SINH</th>
+            <th>ĐỊA CHỈ THƯỜNG TRÚ</th>
+            <th>CHỨC NĂNG</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($quanlyhocvien as $hv)
+          <tr>
+            <td>
+              {{
                         $stt++
                       }}
-                    </td>
-                    <td>{{$hv->HV_HOTEN}}</td>
-                    <td>{{$hv->HV_GIOITINH}}</td>
-                    <td>{{$hv->HV_NGAYSINH}}</td>
-                    <td>  
-                      @foreach($hv->lay_cutruhv as $dc)
-                      @if($dc->THUONG_TRU == "YES")
-                      {{$dc->DIA_CHI}}
-                       ,{{$dc->thuoc_xa->TEN_XA}}
-                       , {{$dc->thuoc_xa->lay_huyen->TEN_HUYEN}}
-                       , {{$dc->thuoc_xa->lay_huyen->lay_tinh->TEN_TINH}}
+            </td>
+            <td>{{$hv->HV_HOTEN}}</td>
+            <td>{{$hv->HV_GIOITINH}}</td>
+            <td>{{$hv->HV_NGAYSINH}}</td>
+            <td>
+              @foreach($hv->lay_cutruhv as $dc)
+              @if($dc->THUONG_TRU == "YES")
+              {{$dc->DIA_CHI}}
+              ,{{$dc->thuoc_xa->TEN_XA}}
+              , {{$dc->thuoc_xa->lay_huyen->TEN_HUYEN}}
+              , {{$dc->thuoc_xa->lay_huyen->lay_tinh->TEN_TINH}}
 
-                      @endif
-                      @endforeach
+              @endif
+              @endforeach
             <td class="project-actions text-center">
               <a class="btn btn-primary btn-sm show" id="{{$hv -> id}}" data-toggle="modal" data-target="#showHocVien">
                 <i class="fas fa-eye"></i>
@@ -123,7 +123,7 @@
               <!-- sua loi 419 -->
               {{csrf_field()}}
               <div class="card-body">
-              
+
                 <label for="">Chi tiết chứng chỉ</label>
                 <div class="form-row">
                   <table id="" class="table table-bordered table-striped">
@@ -166,24 +166,24 @@
               <!-- sua loi 419 -->
               {{csrf_field()}}
               <div class="card-body">
-                <input type="hidden" class="form-control" id="id_HV" name="id">
+                <input type="hidden" id="id_HV" name="id">
                 <div class="form-group">
-                  <label for="HV_HOTEN">Họ tên học viên</label>
+                  <label for="HV_HOTEN_EDIT">Họ tên học viên</label>
                   <input type="text" class="form-control" id="HV_HOTEN_EDIT" name="HV_HOTEN" placeholder="Tên học viên">
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="HV_CMND">CMND/CCCD:</label>
+                    <label for="HV_CMND_EDIT">CMND/CCCD:</label>
                     <input type="text" class="form-control" id="HV_CMND_EDIT" name="HV_CMND" placeholder="CMND/CCCD">
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="HV_DANTOC">Dân tộc:</label>
+                    <label for="HV_DANTOC_EDIT">Dân tộc:</label>
                     <input type="text" class="form-control" id="HV_DANTOC_EDIT" name="HV_DANTOC" placeholder="Kinh">
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="HV_HOCVAN">Trình độ học vấn:</label>
+                    <label for="HV_HOCVAN_EDIT">Trình độ học vấn:</label>
                     <div class="input-group">
                       <select class="form-control" id="HV_HOCVAN_EDIT" name="HV_HOCVAN">
                         <option>1/12</option>
@@ -203,13 +203,14 @@
                     </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="HV_NGHENGHIEP">Nghề nghiệp:</label>
+                    <label for="HV_NGHENGHIEP_EDIT">Nghề nghiệp:</label>
                     <input type="text" class="form-control" id="HV_NGHENGHIEP_EDIT" name="HV_NGHENGHIEP" placeholder="Nghề nghiệp, nơi làm việc hiện tại">
+                    <input type="hidden" id="id_CONGVIEC_EDIT" name="id_CONGVIEC">
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="HV_NGAYSINH">Ngày sinh:</label>
+                    <label for="HV_NGAYSINH_EDIT">Ngày sinh:</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -218,7 +219,7 @@
                     </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="HV_GIOITINH">Giới tính:</label>
+                    <label for="HV_GIOITINH_EDIT">Giới tính:</label>
                     <div class="input-group">
                       <select class="form-control" id="HV_GIOITINH_EDIT" name="HV_GIOITINH">
                         <option>Nam</option>
@@ -312,8 +313,9 @@
                   <input type="hidden" id="id_HV_DIACHI_TT_EDIT" name="id_HV_DIACHI_TT">
                 </div>
                 <div class="form-group">
-                  <label for="HV_THONGTINMOTA">Thông tin người thân:</label>
-                  <textarea class="form-control" id="NGUOIQUEN" name="HV_THONGTINMOTA_EDIT" rows="2"></textarea>
+                  <label for="NGUOIQUEN_EDIT">Thông tin người thân:</label>
+                  <textarea class="form-control" id="NGUOIQUEN_EDIT" name="HV_THONGTINMOTA" rows="2"></textarea>
+                  <input type="hidden" id="id_NGUOIQUEN_EDIT" name="id_NGUOIQUEN">
                 </div>
               </div>
               <div class="modal-footer justify-content-between">

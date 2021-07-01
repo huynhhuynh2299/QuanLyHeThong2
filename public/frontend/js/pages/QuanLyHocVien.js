@@ -8,14 +8,15 @@ $(document).ready(function () {
             const dc_ThuongTru = data["THUONG_TRU"];
             const dc_NguyenQuan = data["NGUYEN_QUAN"];
             const data_DSChungChi = data["DS_CHUNGCHI"];
-            const data_NguoiQuen = data["DS_NGUOIQUEN"];
+            const data_CongViec = data["CONG_VIEC"];
+
             // Gán data vào modal qua id
             $("#id").val(data_HocVien["HV_MASO"]);
             $("#HV_HOTEN").val(data_HocVien["HV_HOTEN"]);
             $("#HV_CMND").val(data_HocVien["HV_CMND"]);
             $("#HV_DANTOC").val(data_HocVien["HV_DANTOC"]);
             $("#HV_HOCVAN").val(data_HocVien["HV_HOCVAN"]);
-            $("#HV_NGHENGHIEP").val("");
+            $("#HV_NGHENGHIEP").val(data_CongViec["CV_TEN"]);
             $("#HV_NGAYSINH").val(data_HocVien["HV_NGAYSINH"]);
             // xử lý selected
             $("#HV_GIOITINH option").each(function () {
@@ -75,8 +76,6 @@ $(document).ready(function () {
                 }
             });
 
-            // $("#NGUOIQUEN").val(nguoiquen["NQ_HOTEN"]);
-
             //   Danh sách chứng chỉ
 
             let html_ItemDSChungChi = "";
@@ -131,8 +130,12 @@ $(document).ready(function () {
 
         $.get("hocvien/" + id, function (data) {
             const data_HocVien = data;
+            const data_CongViec = data["CONG_VIEC"];
             const dc_ThuongTru = data["THUONG_TRU"];
             const dc_NguyenQuan = data["NGUYEN_QUAN"];
+            const data_NguoiQuen = data["DS_NGUOIQUEN"];
+
+            console.log(data_CongViec);
 
             // Gán data vào modal qua id
             $("#id_HV").val(data_HocVien["id"]);
@@ -140,8 +143,17 @@ $(document).ready(function () {
             $("#HV_CMND_EDIT").val(data_HocVien["HV_CMND"]);
             $("#HV_DANTOC_EDIT").val(data_HocVien["HV_DANTOC"]);
             $("#HV_HOCVAN_EDIT").val(data_HocVien["HV_HOCVAN"]);
-            $("#HV_NGHENGHIEP_EDIT").val("");
+            $("#HV_NGHENGHIEP_EDIT").val(data_CongViec[0]["CV_TEN"]);
+            $("#id_CONGVIEC_EDIT").val(data_CongViec[0]["id"]);
+
             $("#HV_NGAYSINH_EDIT").val(data_HocVien["HV_NGAYSINH"]);
+            $("#NGUOIQUEN_EDIT").val(
+                data_NguoiQuen[0]["NQ_HOTEN"] +
+                    ", " +
+                    data_NguoiQuen[0]["NQ_SDT"]
+            );
+            $("#id_NGUOIQUEN_EDIT").val(data_NguoiQuen[0]["id"]);
+
             // xử lý selected
             $("#HV_GIOITINH_EDIT option").each(function () {
                 if ($(this).val() == data_HocVien["HV_GIOITINH"]) {
@@ -163,7 +175,6 @@ $(document).ready(function () {
 
             $("#nguyenquan_tinh_EDIT option").each(function () {
                 if ($(this).val() == dc_NguyenQuan["id_TINH"]) {
-                    console.log(dc_NguyenQuan["TINH"]);
                     $(this).prop("selected", true);
                 }
             });
@@ -203,6 +214,32 @@ $(document).ready(function () {
                 }
             });
         });
+        e.preventDefault();
+    });
+    $(".js_nganhnghedaotao").change();
+
+    // Filter
+    $(".js_nganhnghedaotao").change(function (e) {
+        const id_nganhnghedaotao = $(this).val();
+
+        $.get("danhsachlop/" + id_nganhnghedaotao, function (data) {
+            let html_danhsachlop = "";
+            let element_danhsachlop = ".js_danhsachlop";
+
+            $.each(data, function (index, value) {
+                html_danhsachlop +=
+                    "<option value=" +
+                    value.id +
+                    " >" +
+                    value.L_MASO +
+                    " - " +
+                    value.L_TEN;
+                ("</option>");
+            });
+
+            $(element_danhsachlop).html("").append(html_danhsachlop);
+        });
+
         e.preventDefault();
     });
 

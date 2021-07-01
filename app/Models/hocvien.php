@@ -40,7 +40,7 @@ class hocvien extends Model
 
     public function lay_congviec()
     {
-        return $this->hasMany("App\\Models\\diem", "id_HOCVIEN", "id");
+        return $this->hasMany("App\\Models\\congviec", "id_HOCVIEN", "id");
     }
 
     public function lay_dscc()
