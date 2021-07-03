@@ -1,9 +1,10 @@
 @extends('Admin.layout.index')
 @section('content')
 <style>
-  .col-sm-4 {
+  .col-sm-4{
     margin-left: 10px;
   }
+
 </style>
 
 <!-- Content Wrapper. Contains page content -->
@@ -30,75 +31,75 @@
   <div class="card">
     <!-- /.card-header -->
     <div class="col-sm-4">
-      <div class="form-row">
+  <div class="form-row">
+                 
+                  <div class="form-group col-md-9" >
+                    <label for="exampleInputEmail1" >Lớp học - Khóa học</label>
 
-        <div class="form-group col-md-9">
-          <label for="exampleInputEmail1">Lớp học - Khóa học</label>
-
-
-
-          <form action="hocvientaods" method="POST" enctype="multipart/form-data">
-            {{csrf_field()}}
-            <select class="select2" style="width: 340px;" type="submit" name="id_lop">
-
-
-              @foreach($thuockhoahoc as $kh)
-              @foreach($thuoc_lop as $tl)
-              @if($tl->id_KHOAHOC == $kh->id)
+                    
+           
+                      <form action="hocvientaods" method="POST" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                     <select class="select2" style="width: 340px;" type="submit" name="id_lop">
 
 
-              <option selected value="{{$tl->id}}">{{$tl->L_TEN}} - {{$kh->KH_MASO}}</option>
+                     @foreach($thuockhoahoc as $kh)
+                       @foreach($thuoc_lop as $tl)
+                         @if($tl->id_KHOAHOC == $kh->id)
+                         
 
-              @endif
-              @endforeach
-              @endforeach
+                                       <option selected value="{{$tl->id}}" >{{$tl->L_TEN}} - {{$kh->KH_MASO}}</option>
+                         
+                        @endif
+                         @endforeach
+                         @endforeach
+                        
+                        </select>
+                       
+                        <button id="add-new-event" type="submit" class="btn btn-primary" style="margin-top: -65px; margin-left: 342px; width: 150px;" >Tạo danh sách</button>
+                      </form>
+                   </div>
 
-            </select>
-
-            <button id="add-new-event" type="submit" class="btn btn-primary" style="margin-top: -65px; margin-left: 342px; width: 150px;">Tạo danh sách</button>
-          </form>
-        </div>
-
-      </div>
-    </div>
-
+                </div>
+              </div>
+        
     <div class="card-body">
 
       <table id="example1" class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>STT</th>
-            <th>HỌ VÀ TÊN</th>
-            <th>GIỚI TÍNH</th>
-            <th>NĂM SINH</th>
-            <th>ĐỊA CHỈ THƯỜNG TRÚ</th>
-            <th>CHỨC NĂNG</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($quanlyhocvien as $hv)
-
-          <tr>
-            <td>
-
-              {{
+       <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>HỌ VÀ TÊN</th>
+                    <th>GIỚI TÍNH</th>
+                    <th>NĂM SINH</th>
+                    <th>ĐỊA CHỈ THƯỜNG TRÚ</th>
+                    <th>CHỨC NĂNG</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                     @foreach($quanlyhocvien as $hv)
+                              
+                   <tr>
+                    <td>
+                      
+                      {{
                         $stt++
                       }}
-            </td>
-            <td>{{$hv->thuoc_hocvien->HV_HOTEN}}</td>
-            <td>{{$hv->thuoc_hocvien->HV_GIOITINH}}</td>
-            <td>{{$hv->thuoc_hocvien->HV_NGAYSINH}}</td>
+                    </td>
+                    <td>{{$hv->thuoc_hocvien->HV_HOTEN}}</td>
+                    <td>{{$hv->thuoc_hocvien->HV_GIOITINH}}</td>
+                    <td>{{$hv->thuoc_hocvien->HV_NGAYSINH}}</td>
+                    
+                    <td>  
+                      @foreach($hv->thuoc_hocvien->lay_cutruhv as $dc)
+                      @if($dc->THUONG_TRU == "YES")
+                      {{$dc->DIA_CHI}}
+                       ,{{$dc->thuoc_xa->TEN_XA}}
+                       , {{$dc->thuoc_xa->lay_huyen->TEN_HUYEN}}
+                       , {{$dc->thuoc_xa->lay_huyen->lay_tinh->TEN_TINH}}
 
-            <td>
-              @foreach($hv->thuoc_hocvien->lay_cutruhv as $dc)
-              @if($dc->THUONG_TRU == "YES")
-              {{$dc->DIA_CHI}}
-              ,{{$dc->thuoc_xa->TEN_XA}}
-              , {{$dc->thuoc_xa->lay_huyen->TEN_HUYEN}}
-              , {{$dc->thuoc_xa->lay_huyen->lay_tinh->TEN_TINH}}
-
-              @endif
-              @endforeach
+                       @endif
+                      @endforeach
             <td class="project-actions text-center">
               <a class="btn btn-primary btn-sm show" id="{{$hv -> id}}" data-toggle="modal" data-target="#showHocVien">
                 <i class="fas fa-eye"></i>
@@ -521,7 +522,4 @@
 </div>
 <!-- ./wrapper -->
 
-@endsection
-@section('script')
-<script src="{{asset('frontend/js/pages/QuanLyHocVien.js')}}"></script>
 @endsection

@@ -27,7 +27,6 @@
   <link rel="stylesheet" href="{{asset('frontend/css/adminlte.min.css')}}">
  
  <link rel="stylesheet" href="{{asset('frontend/plugins/fontawesome-free/css/all.min.css')}}">
-  <link rel="stylesheet" href="{{asset('frontend/dist/css/adminlte.min.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/plugins/fontawesome-free/css/all.min.css')}}">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="{{asset('frontend/plugins/fullcalendar/main.css')}}">
@@ -44,6 +43,15 @@
 <body class="hold-transition sidebar-mini">
 
   <!-- /.navbar -->
+  <?php
+    $id_admin = Session()->get('id_admin');
+    $id_user = Session()->get('id_user');
+    if (!$id_admin && !$id_user) {
+        header("refresh:0; url= login");
+        die();
+    }
+    
+    ?>
 
 
   @include('Admin.layout.header')
@@ -343,6 +351,5 @@
 
 
   @yield('script')
-  <script src="{{asset('frontend/js/pages/QuanLyHocVien.js')}}"></script>
 </body>
 </html>

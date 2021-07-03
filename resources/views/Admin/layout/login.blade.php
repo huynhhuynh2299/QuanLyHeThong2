@@ -71,9 +71,10 @@
                         </div>
                         <br>
                         <div class="">
-                            <form action="../../index3.html" method="post">
+                            <form action="login" method="POST" enctype="multipart/form-data">
+                                {{csrf_field()}}
                                 <div class="input-group mb-4">
-                                    <input type="email" class="form-control" placeholder="Tên đăng nhập">
+                                    <input type="text" class="form-control" name="USER_MASO" placeholder="Tên đăng nhập">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <i class="fas fa-user"></i>
@@ -81,7 +82,7 @@
                                     </div>
                                 </div>
                                 <div class="input-group mb-4">
-                                    <input type="password" class="form-control" placeholder="Mật khẩu">
+                                    <input type="password" class="form-control" name="USER_PASS" placeholder="Mật khẩu">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <i class="fas fa-lock"></i>
@@ -97,6 +98,11 @@
                                 </div>
                             </form>
                             <!-- /.social-auth-links -->
+                            <ul class=" alert text-danger">
+                                @foreach ( $errors -> all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 </div>

@@ -355,3 +355,6 @@
 <!-- ./wrapper -->
 
 @endsection
+@section('script')
+<script src="{{asset('frontend/js/pages/QuanLyHocVien.js')}}"></script>
+@endsection

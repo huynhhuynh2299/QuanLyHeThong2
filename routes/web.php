@@ -14,9 +14,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Admin.layout.login');
-});
+// Login
+Route::get('login', 'UserController@index');
+Route::get('/', 'UserController@index');
+Route::get('logout', 'UserController@logout');
+
+Route::post('login', 'UserController@login');
+// Quản lý người dùng
+Route::get('danhsachuser', 'UserController@getDanhSach');
+Route::get('themuser', 'UserController@getThem');
+Route::get('user/{id}', 'UserController@getByID');
+Route::post('user/edit', 'UserController@edit');
+Route::post('user/add', 'UserController@add');
+Route::get('user/{id}/xoa', 'UserController@xoa');
+// lọc
+Route::post('danhsachuser/{id}', 'UserController@filterDanhSach');
+
+
+// Quản lý loại người dùng
+Route::get('danhsachloaiuser', 'LoaiUserController@getDanhSach');
+Route::get('themloaiuser', 'LoaiUserController@getThem');
+Route::get('loaiuser/{id}', 'LoaiUserController@getByID');
+Route::post('loaiuser/edit', 'LoaiUserController@edit');
+Route::post('loaiuser/add', 'LoaiUserController@add');
+Route::get('loaiuser/{id}/xoa', 'LoaiUserController@xoa');
+
+
+
 
 
 

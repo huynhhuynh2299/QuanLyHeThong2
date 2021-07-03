@@ -40,11 +40,59 @@
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Tổng Quan
-         
               </p>
             </a>
-   
+
           </li>
+          <?php
+          $id_admin = Session()->get('id_admin');
+          if($id_admin) {
+          ?>
+          <li class="nav-item">
+            <a href="widgets.html" class="nav-link ">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Quản lý người dùng
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="danhsachuser" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách người dùng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="themuser" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm người dùng</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="widgets.html" class="nav-link ">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Quản lý loại người dùng
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="danhsachloaiuser" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách loại người dùng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="themloaiuser" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Thêm loại người dùng</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <?php } ?>
           <li class="nav-item">
             <a href="widgets.html" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
@@ -53,7 +101,7 @@
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
-              <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="danhsachgiaovien" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -72,9 +120,9 @@
                   <p>Giao diện giáo viên</p>
                 </a>
               </li>
-       
-          
-          
+
+
+
             </ul>
           </li>
           <li class="nav-item">
@@ -86,7 +134,7 @@
                 <span class="badge badge-info right">6</span>
               </p>
             </a>
-           <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="danhsachhocvien" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -110,7 +158,7 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-             <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="danhsachhocvien" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -123,18 +171,18 @@
                   <p>Thêm cơ sở đào tạo</p>
                 </a>
               </li>
-      
+
             </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
-              Quản lý loại hình đạo
+                Quản lý loại hình đạo
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-               <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="danhsachhocvien" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -147,7 +195,7 @@
                   <p>Thêm học loại hình đạo</p>
                 </a>
               </li>
-      
+
             </ul>
           </li>
           <li class="nav-item">
@@ -158,7 +206,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-              <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="danhsachhocvien" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -171,7 +219,7 @@
                   <p>Thêm ngành nghề</p>
                 </a>
               </li>
-      
+
             </ul>
           </li>
           <li class="nav-item">
@@ -182,7 +230,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-                <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="danhsachhocvien" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -195,10 +243,10 @@
                   <p>Thêm module</p>
                 </a>
               </li>
-      
+
             </ul>
           </li>
-           <li class="nav-item">
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
@@ -206,7 +254,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-               <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="danhsachhocvien" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -219,18 +267,18 @@
                   <p>Thêm lớp</p>
                 </a>
               </li>
-      
+
             </ul>
           </li>
 
-          
+
 
           <li class="nav-header">HỖ TRỢ NGƯỜI DÙNG</li>
           <li class="nav-item">
             <a href="calendar.html" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                Lịch học 
+                Lịch học
                 <span class="badge badge-info right">2</span>
               </p>
             </a>
@@ -247,7 +295,7 @@
             <a href="kanban.html" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
-                 Tổ chức lớp khóa học
+                Tổ chức lớp khóa học
               </p>
             </a>
           </li>
@@ -491,7 +539,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-plus-square"></i>
               <p>
-                  Biểu mẫu
+                Biểu mẫu
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -532,268 +580,268 @@
                 </ul>
               </li>
               <li class="nav-item">
-          
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Login & Register
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="examples/login.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Login v1</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="examples/register.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Register v1</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="examples/forgot-password.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Forgot Password v1</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="examples/recover-password.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Recover Password v1</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <p>
-                Quản lý người dùng
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Login & Register
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="examples/login.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Login v1</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="examples/register.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Register v1</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="examples/forgot-password.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Forgot Password v1</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="examples/recover-password.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Recover Password v1</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-               <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <p>
-                THỐNG KÊ
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-          </li>
-          
 
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Login & Register v2
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="examples/login-v2.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Login v2</p>
+                      <p>
+                        Login & Register
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="examples/login.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Login v1</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="examples/register.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Register v1</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="examples/forgot-password.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Forgot Password v1</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="examples/recover-password.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Recover Password v1</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon far fa-plus-square"></i>
+                      <p>
+                        Quản lý người dùng
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>
+                            Login & Register
+                            <i class="fas fa-angle-left right"></i>
+                          </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                            <a href="examples/login.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Login v1</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="examples/register.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Register v1</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="examples/forgot-password.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Forgot Password v1</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="examples/recover-password.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Recover Password v1</p>
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="nav-icon far fa-plus-square"></i>
+                          <p>
+                            THỐNG KÊ
+                            <i class="fas fa-angle-left right"></i>
+                          </p>
+                        </a>
+                      </li>
+
+
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>
+                            Login & Register v2
+                            <i class="fas fa-angle-left right"></i>
+                          </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                            <a href="examples/login-v2.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Login v2</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="examples/register-v2.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Register v2</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="examples/forgot-password-v2.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Forgot Password v2</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="examples/recover-password-v2.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Recover Password v2</p>
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="nav-item">
+                        <a href="examples/lockscreen.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Lockscreen</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="examples/legacy-user-menu.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Legacy User Menu</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="examples/language-menu.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Language Menu</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="examples/404.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Error 404</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="examples/500.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Error 500</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="examples/pace.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Pace</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="examples/blank.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Blank Page</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="frontend/starter.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Starter Page</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>
+                        Login & Register v2
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="examples/login-v2.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Login v2</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="examples/register-v2.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Register v2</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="examples/forgot-password-v2.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Forgot Password v2</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="examples/recover-password-v2.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Recover Password v2</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a href="examples/lockscreen.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Lockscreen</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="examples/register-v2.html" class="nav-link">
+                    <a href="examples/legacy-user-menu.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Register v2</p>
+                      <p>Legacy User Menu</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="examples/forgot-password-v2.html" class="nav-link">
+                    <a href="examples/language-menu.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Forgot Password v2</p>
+                      <p>Language Menu</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="examples/recover-password-v2.html" class="nav-link">
+                    <a href="examples/404.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Recover Password v2</p>
+                      <p>Error 404</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="examples/500.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Error 500</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="examples/pace.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Pace</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="examples/blank.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Blank Page</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="frontend/starter.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Starter Page</p>
                     </a>
                   </li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a href="examples/lockscreen.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Lockscreen</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="examples/legacy-user-menu.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Legacy User Menu</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="examples/language-menu.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Language Menu</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="examples/404.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Error 404</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="examples/500.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Error 500</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="examples/pace.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pace</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="examples/blank.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Blank Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="frontend/starter.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Starter Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Login & Register v2
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="examples/login-v2.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Login v2</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="examples/register-v2.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Register v2</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="examples/forgot-password-v2.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Forgot Password v2</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="examples/recover-password-v2.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Recover Password v2</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="examples/lockscreen.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Lockscreen</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="examples/legacy-user-menu.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Legacy User Menu</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="examples/language-menu.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Language Menu</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="examples/404.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Error 404</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="examples/500.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Error 500</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="examples/pace.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pace</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="examples/blank.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Blank Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="frontend/starter.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Starter Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -903,12 +951,12 @@
             </ul>
           </li>
           <li class="nav-header">THỐNG KÊ</li>
-        
-             <li class="nav-item">
+
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
-               Thống kê
+                Thống kê
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -1029,4 +1077,3 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
