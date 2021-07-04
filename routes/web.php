@@ -28,7 +28,7 @@ Route::post('user/edit', 'UserController@edit');
 Route::post('user/add', 'UserController@add');
 Route::get('user/{id}/xoa', 'UserController@xoa');
 // lọc
-Route::post('danhsachuser/{id}', 'UserController@filterDanhSach');
+Route::get('danhsachuser/filter', 'UserController@filterDanhSach');
 
 
 // Quản lý loại người dùng

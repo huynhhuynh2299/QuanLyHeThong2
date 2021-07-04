@@ -47,12 +47,16 @@ class UserController extends Controller
         return Redirect::to('/login');
     }
 
-    public function getDanhSach()
+    public function getDanhSach(Request $request)
     {
         $user_all = user::all()->where('id_LOAIUSER', '<>', '1');
         $loaiuser_all = loaiuser::all()->where('LU_TEN', '<>', 'Admin');
         $stt = 1;
 
+        // Filter
+        if (isset($request->id_LOAIUSER) && $request->id_LOAIUSER != 0) {
+            $user_all = user::all()->where('id_LOAIUSER', $request->id_LOAIUSER)->where('id_LOAIUSER', '<>', '1');
+        }
         return view(
             'Admin.QuanLyUser.DanhSach',
             [
@@ -144,8 +148,18 @@ class UserController extends Controller
         return Redirect::to('danhsachuser');
     }
 
-    public function xoa($id) {
+    public function xoa($id)
+    {
         user::find($id)->delete();
         return Redirect::to('danhsachuser');
+    }
+
+    public function filterDanhSach(Request $request)
+    {
+        $user_all = user::all()->where('id_LOAIUSER', $request->id_LOAIUSER);
+        $loaiuser_all = loaiuser::all()->where('LU_TEN', '<>', 'Admin');
+        $stt = 1;
+
+        return $user_all;
     }
 }

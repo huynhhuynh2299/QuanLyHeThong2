@@ -24,19 +24,24 @@
 
 
   <div class="card">
-    <div class="col-sm-4">
+    <div class="col-sm-8">
       <div class="form-row">
-
         <div class="form-group col-md-9">
-          <label for="exampleInputEmail1">Lọc theo loại người dùng</label>
-          <form action="nguoidungtaods" method="POST" enctype="multipart/form-data">
-            {{csrf_field()}}
-            <select class="select2" style="width: 340px;" type="submit" name="id_lop">
-              @foreach($loaiuser_all as $loaiuser)
-              <option selected value="{{$loaiuser->id}}">{{$loaiuser->LU_TEN}}</option>
-              @endforeach
-            </select>
-            <button id="add-new-event" type="submit" class="btn btn-primary" style="margin-top: -65px; margin-left: 342px; width: 150px;">Tạo danh sách</button>
+          <form action="danhsachuser?filter=true" method="get" enctype="multipart/form-data">
+            <label for="id_LOAIUSER_FILTER">Lọc theo loại người dùng</label>
+            <div class="form-row">
+              <div class="form-group col-md-9">
+                <select class="select2" style="width: 340px;" type="submit" id="id_LOAIUSER_FILTER" name="id_LOAIUSER">
+                  <option selected="selected" value="0">Tất cả người dùng</option>
+                  @foreach($loaiuser_all as $loaiuser)
+                  <option <?php if( isset($_GET['id_LOAIUSER'])) {if($loaiuser->id == $_GET['id_LOAIUSER']) echo "selected=\"selected\"";} ?> value="{{$loaiuser->id}}">{{$loaiuser->LU_TEN}}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <button id="add-new-event" type="submit" class="btn btn-primary"><i class="fas fa-filter"></i> Lọc</button>
+              </div>
+            </div>
           </form>
         </div>
 
@@ -128,7 +133,7 @@
                 </div>
               </div>
               <div class="modal-footer ">
-                <button type="submit" class="btn btn-primary" >Lưu</button>
+                <button type="submit" class="btn btn-primary">Lưu</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
               </div>
             </div>
