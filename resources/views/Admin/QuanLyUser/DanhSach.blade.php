@@ -1,5 +1,13 @@
 @extends('Admin.layout.index')
 @section('content')
+<!-- Check user -->
+<?php
+$id_admin = Session()->get('id_admin');
+if (!$id_admin) {
+  header("refresh:0; url= danhsachhocvien");
+  die();
+}
+?>
 
 
 <!-- Content Wrapper. Contains page content -->
@@ -34,7 +42,9 @@
                 <select class="select2" style="width: 340px;" type="submit" id="id_LOAIUSER_FILTER" name="id_LOAIUSER">
                   <option selected="selected" value="0">Tất cả người dùng</option>
                   @foreach($loaiuser_all as $loaiuser)
-                  <option <?php if( isset($_GET['id_LOAIUSER'])) {if($loaiuser->id == $_GET['id_LOAIUSER']) echo "selected=\"selected\"";} ?> value="{{$loaiuser->id}}">{{$loaiuser->LU_TEN}}</option>
+                  <option <?php if (isset($_GET['id_LOAIUSER'])) {
+                            if ($loaiuser->id == $_GET['id_LOAIUSER']) echo "selected=\"selected\"";
+                          } ?> value="{{$loaiuser->id}}">{{$loaiuser->LU_TEN}}</option>
                   @endforeach
                 </select>
               </div>

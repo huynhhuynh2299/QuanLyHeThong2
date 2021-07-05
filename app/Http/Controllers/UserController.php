@@ -33,8 +33,13 @@ class UserController extends Controller
         $result = user::where('USER_MASO', $USER_MASO)->first();
 
         if (Hash::check($request->USER_PASS, $result->USER_PASS)) {
-            Session()->put('id_admin', true);
-            return Redirect::to('/danhsachuser');
+            if ($result->id_LOAIUSER == 1) {
+                Session()->put('id_admin', true);
+                return Redirect::to('/danhsachuser');
+            } else {
+                Session()->put('id_user', true);
+                return Redirect::to('/danhsachhocvien');
+            }
             echo "<script> alert('Đăng nhập thành công')</script>";
         } else {
             echo "<script> alert('Sai tên đăng nhập hoặc mật khẩu')</script>";

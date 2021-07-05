@@ -1,5 +1,13 @@
 @extends('Admin.layout.index')
 @section('content')
+<!-- Check user -->
+<?php
+$id_admin = Session()->get('id_admin');
+if (!$id_admin) {
+  header("refresh:0; url= danhsachhocvien");
+  die();
+}
+?>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">

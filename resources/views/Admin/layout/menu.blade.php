@@ -9,13 +9,16 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex row justify-content-between">
         <div class="image">
           <img src="frontend/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Username</a>
         </div>
+        <a href="logout" class="alert-link btn btn-primary">
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
       </div>
 
       <!-- SidebarSearch Form -->
@@ -46,52 +49,52 @@
           </li>
           <?php
           $id_admin = Session()->get('id_admin');
-          if($id_admin) {
+          if ($id_admin) {
           ?>
-          <li class="nav-item">
-            <a href="widgets.html" class="nav-link ">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Quản lý người dùng
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="danhsachuser" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sách người dùng</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="themuser" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Thêm người dùng</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="widgets.html" class="nav-link ">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Quản lý loại người dùng
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="danhsachloaiuser" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Danh sách loại người dùng</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="themloaiuser" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Thêm loại người dùng</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+            <li class="nav-item">
+              <a href="widgets.html" class="nav-link ">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Quản lý người dùng
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="danhsachuser" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Danh sách người dùng</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="themuser" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Thêm người dùng</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="widgets.html" class="nav-link ">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Quản lý loại người dùng
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="danhsachloaiuser" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Danh sách loại người dùng</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="themloaiuser" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Thêm loại người dùng</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
           <?php } ?>
           <li class="nav-item">
             <a href="widgets.html" class="nav-link active">
