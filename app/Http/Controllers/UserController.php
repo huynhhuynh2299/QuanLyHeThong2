@@ -35,13 +35,13 @@ class UserController extends Controller
         if (Hash::check($request->USER_PASS, $result->USER_PASS)) {
             if ($result->id_LOAIUSER == 1) {
                 Session()->put('admin_login', true);
-                Session()->put('id_admin', $request->id);
-                Session()->put('USER_TEN', $request->USER_TEN);
+                Session()->put('id_admin', $result->id);
+                Session()->put('USER_TEN', $result->USER_TEN);
                 return Redirect::to('/danhsachuser');
             } else {
                 Session()->put('user_login', true);
-                Session()->put('id_user', $request->id);
-                Session()->put('USER_TEN', $request->USER_TEN);
+                Session()->put('id_user', $result->id);
+                Session()->put('USER_TEN', $result->USER_TEN);
                 return Redirect::to('/danhsachhocvien');
             }
             echo "<script> alert('Đăng nhập thành công')</script>";

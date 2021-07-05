@@ -9,16 +9,25 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex row justify-content-between">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex row">
         <div class="image">
           <img src="frontend/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="info">
-          <a href="#" class="d-block">Username</a>
+        <div class="info col-md-7">
+          <?php
+          $USER_TEN = Session()->get('USER_TEN');
+          if ($USER_TEN != '') {
+            echo "<a href='#' class='d-block'>" . $USER_TEN . "</a>";
+          } else {
+            echo 'ksajdhfjashfkjh';
+          } ?>
         </div>
-        <a href="logout" class="alert-link btn btn-primary">
-          <i class="fas fa-sign-out-alt"></i>
-        </a>
+        <div class="col-md-2">
+          <a href="logout" class="alert-link btn btn-primary">
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+        </div>
+
       </div>
 
       <!-- SidebarSearch Form -->
@@ -48,8 +57,8 @@
 
           </li>
           <?php
-          $id_admin = Session()->get('admin_login');
-          if ($id_admin) {
+          $admin_login = Session()->get('admin_login');
+          if ($admin_login) {
           ?>
             <li class="nav-item">
               <a href="widgets.html" class="nav-link ">
@@ -65,24 +74,14 @@
                     <p>Danh sách người dùng</p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="themuser" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Thêm người dùng</p>
-                  </a>
-                </li>
+
                 <li class="nav-item">
                   <a href="danhsachloaiuser" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Danh sách loại người dùng</p>
+                    <p>Danh sách loại</p>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a href="themloaiuser" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Thêm loại người dùng</p>
-                  </a>
-                </li>
+
               </ul>
             </li>
           <?php } ?>
