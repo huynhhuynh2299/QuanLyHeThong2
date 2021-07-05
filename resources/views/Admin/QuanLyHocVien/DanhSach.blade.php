@@ -308,7 +308,6 @@
                 <div class="form-group">
                   <span>Địa chỉ</span>
                   <input type="text" class="form-control" id="HV_DIACHI_TT_EDIT" name="HV_DIACHI_TT" placeholder="Địa chỉ">
-                  <input type="hidden" id="id_HV_DIACHI_TT_EDIT" name="id_HV_DIACHI_TT">
                 </div>
                 <div class="form-group">
                   <label for="NGUOIQUEN_EDIT">Thông tin người thân:</label>
@@ -322,7 +321,6 @@
                 </div>
                 <div class="col-auto">
                   <button type="submit" class="btn btn-primary">Chỉnh sửa</button>
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
                 </div>
               </div>
             </div>
@@ -500,6 +498,7 @@
                 <div class="form-group">
                   <span>Địa chỉ</span>
                   <input type="text" class="form-control" id="HV_DIACHI_TT_EDIT" name="HV_DIACHI_TT" placeholder="Địa chỉ">
+                  <input type="hidden" id="id_HV_DIACHI_NQ_EDIT" name="id_HV_DIACHI_NQ">
                 </div>
                 <label for="NQ_HOTEN_ADD">Thông tin người thân:</label>
                 <input type="hidden" id="id_NGUOIQUEN_EDIT" name="id_NGUOIQUEN">
@@ -515,11 +514,14 @@
                   <div class="form-group col-md-4">
                     <span>Địa chỉ:</span>
                     <input type="text" class="form-control" id="NQ_DIACHI_EDIT" name="NQ_DIACHI" placeholder="Địa chỉ người thân">
+                    <input type="hidden" id="id_HV_DIACHI_TT_EDIT" name="id_HV_DIACHI_TT">
                   </div>
                 </div>
               </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Lưu</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+
               </div>
 
           </form>

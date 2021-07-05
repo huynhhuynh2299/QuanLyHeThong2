@@ -135,7 +135,111 @@ $(document).ready(function () {
             const dc_NguyenQuan = data["NGUYEN_QUAN"];
             const data_NguoiQuen = data["DS_NGUOIQUEN"];
 
-            console.log(data_CongViec);
+            // gán location
+            $.get(
+                "location/all_huyen=true",
+                { id_TINH: dc_NguyenQuan["id_TINH"] },
+                function (data) {
+                    let element_huyen = "#nguyenquan_huyen_EDIT";
+                    let html_huyen = "";
+
+                    $.each(data, function (index, value) {
+                        html_huyen +=
+                            "<option value=" +
+                            value.id +
+                            "   >" +
+                            value.TEN_HUYEN +
+                            "</option>";
+                    });
+
+                    $(element_huyen).html("").append(html_huyen);
+
+                    $("#nguyenquan_huyen_EDIT option").each(function () {
+                        if ($(this).val() == dc_NguyenQuan["id_HUYEN"]) {
+                            $(this).prop("selected", true);
+                        }
+                    });
+                }
+            );
+
+            $.get(
+                "location/all_huyen=true",
+                { id_HUYEN: dc_NguyenQuan["id_HUYEN"] },
+                function (data) {
+                    let element_xa = "#nguyenquan_xa_EDIT";
+                    let html_xa = "";
+
+                    $.each(data, function (index, value) {
+                        html_xa +=
+                            "<option value=" +
+                            value.id +
+                            "   >" +
+                            value.TEN_XA +
+                            "</option>";
+                    });
+
+                    $(element_xa).html("").append(html_xa);
+
+                    $("#nguyenquan_xa_EDIT option").each(function () {
+                        if ($(this).val() == dc_NguyenQuan["id_XA"]) {
+                            $(this).prop("selected", true);
+                        }
+                    });
+                }
+            );
+
+            $.get(
+                "location/all_huyen=true",
+                { id_TINH: dc_ThuongTru["id_TINH"] },
+                function (data) {
+                    let element_huyen = "#thuongtru_huyen_EDIT";
+                    let html_huyen = "";
+
+                    $.each(data, function (index, value) {
+                        html_huyen +=
+                            "<option value=" +
+                            value.id +
+                            "   >" +
+                            value.TEN_HUYEN +
+                            "</option>";
+                    });
+
+                    $(element_huyen).html("").append(html_huyen);
+
+                    $("#thuongtru_huyen_EDIT option").each(function () {
+
+                        if ($(this).val() == dc_ThuongTru["id_HUYEN"]) {
+                            $(this).prop("selected", true);
+                        }
+                    });
+                }
+            );
+
+            $.get(
+                "location/all_huyen=true",
+                { id_HUYEN: dc_ThuongTru["id_HUYEN"] },
+                function (data) {
+                    let element_xa = "#thuongtru_xa_EDIT";
+                    let html_xa = "";
+
+                    $.each(data, function (index, value) {
+                        html_xa +=
+                            "<option value=" +
+                            value.id +
+                            "   >" +
+                            value.TEN_XA +
+                            "</option>";
+                    });
+
+                    $(element_xa).html("").append(html_xa);
+
+                    $("#thuongtru_xa_EDIT option").each(function () {
+                        if ($(this).val() == dc_ThuongTru["id_XA"]) {
+                            $(this).prop("selected", true);
+                        }
+                    });
+                }
+            );
 
             // Gán data vào modal qua id
             $("#id_HV").val(data_HocVien["id"]);
@@ -179,18 +283,6 @@ $(document).ready(function () {
                 }
             });
 
-            $("#nguyenquan_huyen_EDIT option").each(function () {
-                if ($(this).val() == dc_NguyenQuan["id_HUYEN"]) {
-                    $(this).prop("selected", true);
-                }
-            });
-
-            $("#nguyenquan_xa_EDIT option").each(function () {
-                if ($(this).val() == dc_NguyenQuan["id_XA"]) {
-                    $(this).prop("selected", true);
-                }
-            });
-
             // Thường trú
 
             $("#HV_DIACHI_TT_EDIT").val(dc_ThuongTru["DIA_CHI"]);
@@ -198,18 +290,6 @@ $(document).ready(function () {
 
             $("#thuongtru_tinh_EDIT option").each(function () {
                 if ($(this).val() == dc_ThuongTru["id_TINH"]) {
-                    $(this).prop("selected", true);
-                }
-            });
-
-            $("#thuongtru_huyen_EDIT option").each(function () {
-                if ($(this).val() == dc_ThuongTru["id_HUYEN"]) {
-                    $(this).prop("selected", true);
-                }
-            });
-
-            $("#thuongtru_xa_EDIT option").each(function () {
-                if ($(this).val() == dc_ThuongTru["id_XA"]) {
                     $(this).prop("selected", true);
                 }
             });
