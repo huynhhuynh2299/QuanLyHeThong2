@@ -48,7 +48,7 @@
 
           </li>
           <?php
-          $id_admin = Session()->get('id_admin');
+          $id_admin = Session()->get('admin_login');
           if ($id_admin) {
           ?>
             <li class="nav-item">
@@ -71,16 +71,6 @@
                     <p>Thêm người dùng</p>
                   </a>
                 </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="widgets.html" class="nav-link ">
-                <i class="nav-icon fas fa-users"></i>
-                <p>
-                  Quản lý loại người dùng
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="danhsachloaiuser" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>

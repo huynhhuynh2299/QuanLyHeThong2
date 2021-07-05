@@ -181,7 +181,7 @@ class HocVienController extends Controller
         // validation
 
         $request->validate([
-            'HV_HOTEN' => 'required|max:50',
+            'HV_HOTEN' => 'required',
             'HV_CMND' => 'required',
             'HV_DANTOC' => 'required',
             'HV_HOCVAN' => 'required',
@@ -371,7 +371,7 @@ class HocVienController extends Controller
         $request->validate([
             'id' => 'required',
 
-            'HV_HOTEN' => 'required|max:50',
+            'HV_HOTEN' => 'required',
             'HV_CMND' => 'required',
             'HV_DANTOC' => 'required',
             'HV_HOCVAN' => 'required',
@@ -379,6 +379,10 @@ class HocVienController extends Controller
             'HV_NGAYSINH' => 'required',
             'HV_GIOITINH' => 'required',
             'HV_SDT' => 'required|numeric',
+
+            'CV_TEN' => 'required',
+            'CV_NOILAM' => 'required',
+            'CV_TGNHAN' => 'required',
 
             'NGUYENQUAN_TINH' => 'required',
             'NGUYENQUAN_HUYEN' => 'required',
@@ -393,7 +397,6 @@ class HocVienController extends Controller
 
         ], [
             'required' => ':attribute không được để trống',
-            'max' => ':attribute không được quá :max kí tự',
             'numeric' => ':attribute phải nhập chỉ số',
         ], [
 
@@ -405,6 +408,10 @@ class HocVienController extends Controller
             'HV_NGAYSINH' => 'Ngày sinh',
             'HV_GIOITINH' => 'Giới tính',
             'HV_SDT' => 'Số điện thoại',
+
+            'CV_TEN' => 'Tên công việc',
+            'CV_NOILAM' => 'Nơi làm việc',
+            'CV_TGNHAN' => 'Thời gian nhận việc',
 
             'NGUYENQUAN_TINH' => 'Tỉnh/Thành phố',
             'NGUYENQUAN_HUYEN' => 'Quận/Huyện',
@@ -442,11 +449,15 @@ class HocVienController extends Controller
         ]);
 
         $congviec = congviec::where('id', $request->id_CONGVIEC)->update([
-            'CV_TEN' => $request->HV_NGHENGHIEP,
+            'CV_TEN' => $request->CV_TEN,
+            'CV_NOILAM' => $request->CV_NOILAM,
+            'CV_TGNHAN' => $request->CV_TGNHAN,
         ]);
 
         $nguoiquen = nguoiquen::where('id', $request->id_NGUOIQUEN)->update([
-            'NQ_HOTEN' => $request->HV_THONGTINMOTA,
+            'NQ_HOTEN' => $request->NQ_HOTEN,
+            'NQ_SDT' => $request->NQ_SDT,
+            'NQ_DIACHI' => $request->NQ_DIACHI,
         ]);
 
         return Redirect::to('danhsachhocvien');

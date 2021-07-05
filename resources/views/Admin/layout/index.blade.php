@@ -44,8 +44,8 @@
 
   <!-- /.navbar -->
   <?php
-    $id_admin = Session()->get('id_admin');
-    $id_user = Session()->get('id_user');
+    $id_admin = Session()->get('admin_login');
+    $id_user = Session()->get('user_login');
     if (!$id_admin && !$id_user) {
         header("refresh:0; url= login");
         die();

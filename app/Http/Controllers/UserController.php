@@ -34,10 +34,14 @@ class UserController extends Controller
 
         if (Hash::check($request->USER_PASS, $result->USER_PASS)) {
             if ($result->id_LOAIUSER == 1) {
-                Session()->put('id_admin', true);
+                Session()->put('admin_login', true);
+                Session()->put('id_admin', $request->id);
+                Session()->put('USER_TEN', $request->USER_TEN);
                 return Redirect::to('/danhsachuser');
             } else {
-                Session()->put('id_user', true);
+                Session()->put('user_login', true);
+                Session()->put('id_user', $request->id);
+                Session()->put('USER_TEN', $request->USER_TEN);
                 return Redirect::to('/danhsachhocvien');
             }
             echo "<script> alert('Đăng nhập thành công')</script>";
@@ -55,7 +59,7 @@ class UserController extends Controller
     public function getDanhSach(Request $request)
     {
         $user_all = user::all()->where('id_LOAIUSER', '<>', '1');
-        $loaiuser_all = loaiuser::all()->where('LU_TEN', '<>', 'Admin');
+        $loaiuser_all = loaiuser::all()->where('id', '<>', '1');
         $stt = 1;
 
         // Filter
@@ -115,7 +119,7 @@ class UserController extends Controller
 
     public function getThem()
     {
-        $loaiuser_all = loaiuser::all()->where('LU_TEN', '<>', 'Admin');
+        $loaiuser_all = loaiuser::all()->where('id', '<>', '1');
         $stt = 1;
 
         return view(
@@ -162,7 +166,7 @@ class UserController extends Controller
     public function filterDanhSach(Request $request)
     {
         $user_all = user::all()->where('id_LOAIUSER', $request->id_LOAIUSER);
-        $loaiuser_all = loaiuser::all()->where('LU_TEN', '<>', 'Admin');
+        $loaiuser_all = loaiuser::all()->where('id', '<>', '1');
         $stt = 1;
 
         return $user_all;

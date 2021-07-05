@@ -143,15 +143,15 @@ $(document).ready(function () {
             $("#HV_CMND_EDIT").val(data_HocVien["HV_CMND"]);
             $("#HV_DANTOC_EDIT").val(data_HocVien["HV_DANTOC"]);
             $("#HV_HOCVAN_EDIT").val(data_HocVien["HV_HOCVAN"]);
-            $("#HV_NGHENGHIEP_EDIT").val(data_CongViec[0]["CV_TEN"]);
+            $("#CV_TEN_EDIT").val(data_CongViec[0]["CV_TEN"]);
+            $("#CV_NOILAM_EDIT").val(data_CongViec[0]["CV_NOILAM"]);
+            $("#CV_TGNHAN_EDIT").val(data_CongViec[0]["CV_TGNHAN"]);
             $("#id_CONGVIEC_EDIT").val(data_CongViec[0]["id"]);
 
             $("#HV_NGAYSINH_EDIT").val(data_HocVien["HV_NGAYSINH"]);
-            $("#NGUOIQUEN_EDIT").val(
-                data_NguoiQuen[0]["NQ_HOTEN"] +
-                    ", " +
-                    data_NguoiQuen[0]["NQ_SDT"]
-            );
+            $("#NQ_HOTEN_EDIT").val(data_NguoiQuen[0]["NQ_HOTEN"]);
+            $("#NQ_SDT_EDIT").val(data_NguoiQuen[0]["NQ_SDT"]);
+            $("#NQ_DIACHI_EDIT").val(data_NguoiQuen[0]["NQ_DIACHI"]);
             $("#id_NGUOIQUEN_EDIT").val(data_NguoiQuen[0]["id"]);
 
             // xử lý selected
