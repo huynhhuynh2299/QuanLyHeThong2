@@ -15,4 +15,10 @@ class lop extends Model
     public function lay_hocvien(){
         return $this->hasMany("App\\Models\\hoctailop","id_LOP","id");
     }
+    public function thuoc_nghe(){
+        return $this->belongsTo("App\\Models\\nganhnghedaotao","id_NGANHNGHEDAOTAO","id");
+    }
+    public function thuoc_khoahoc(){
+        return $this->belongsTo('App\\Models\\khoahoc','id_KHOAHOC','id');
+    }
 }

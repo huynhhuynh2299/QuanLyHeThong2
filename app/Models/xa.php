@@ -28,4 +28,15 @@ class xa extends Model
     public function lay_csdt(){
         return $this->hasMany("App\\Models\\cosodaotao", "id_XA","id");
     }
+
+     // lấy chuỗi 
+    public function lay_cutruhv(){
+        return $this->hasMany("App\\Models\\cutruhv", "id_XA","id");
+    }
+
+    public function lay_cutrugv(){
+        return $this->hasMany("App\\Models\\cutrugv", "id_XA","id");
+    }
+
+ 
 }

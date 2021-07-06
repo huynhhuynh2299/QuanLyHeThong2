@@ -3,6 +3,12 @@
 <style>
   .col-sm-4{
     margin-left: 10px;
+}
+     button{
+      
+      border: 0px;
+      
+     
   }
 
 </style>
@@ -100,18 +106,45 @@
 
                        @endif
                       @endforeach
-            <td class="project-actions text-center">
-              <a class="btn btn-primary btn-sm show" id="{{$hv -> id}}" data-toggle="modal" data-target="#showHocVien">
-                <i class="fas fa-eye"></i>
+            <td class="project-actions text-center" >
+               
+
+
+             
+                 <form action="dsbangdiem" method="post">
+                           {{csrf_field()}}
+                          <input type="hidden" name="id_hv" value="{{$hv->thuoc_hocvien->id}}">
+                          <input type="hidden" name="id_lop" value="{{ $id_lop }}">
+                          <button type="submit" style="position: absolute;">
+                           <a class="btn btn-primary btn-sm" >
+                            <i class="fas fa-microscope"></i>
+
+                           </a>
+                          </button>
+                        </form>
+
+                        
+
+
+           
+              <a class="btn btn-primary btn-sm show" id="{{$hv -> id}}" data-toggle="modal" data-target="#showHocVien" style="margin-top:-59px; margin-left:112px; position: absolute;">
+                <i class="fas fa-award"></i>
               </a>
-              <a class="btn btn-info btn-sm edit" id="{{$hv -> id}}" data-toggle="modal" data-target="#editHocVien">
+              <a class="btn btn-info btn-sm edit" id="{{$hv -> id}}" data-toggle="modal" data-target="#editHocVien" style="margin-top:-59px; position: absolute;">
                 <i class="fas fa-pencil-alt">
                 </i>
               </a>
-              <a class="btn btn-danger btn-sm" href="xoa/{{$hv -> id}}">
-                <i class="fas fa-trash">
-                </i>
-              </a>
+               <form action="loc/pdf" method="post" >
+                           {{csrf_field()}}
+                          <input type="hidden" name="id_hv" value="{{$hv->id_HOCVIEN}}">
+                          <input type="hidden" name="id_lop" value="{{$hv->id_LOP}}">
+
+                          <button type="submit" >  <a class="btn btn-primary btn-sm"  >
+                              <i class="fas fa-print"></i>
+                              In
+
+                          </a></button>
+                        </form>
             </td>
           </tr>
           @endforeach
@@ -127,7 +160,7 @@
       <!-- /.card-body -->
     </div>
     <!-- Thông tin học viên -->
-    <div class="modal fade" id="showHocVien" tabindex="-1" aria-labelledby="showHocVienModalLabel" aria-hidden="true">
+    <div class="modal fade" id="showHocVien" tabindex="1" aria-labelledby="showHocVienModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -141,159 +174,7 @@
               <!-- sua loi 419 -->
               {{csrf_field()}}
               <div class="card-body">
-                <!-- <div>
-                  <input type="hidden" class="form-control" id="id" name="id" placeholder="">
-                  <div class="form-group">
-                    <label for="HV_HOTEN">Họ tên học viên</label>
-                    <input type="text" class="form-control" id="HV_HOTEN" placeholder="Tên học viên" disabled>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="HV_CMND">CMND/CCCD:</label>
-                      <input type="text" class="form-control" id="HV_CMND" placeholder="CMND/CCCD" disabled>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="HV_DANTOC">Dân tộc:</label>
-                      <input type="text" class="form-control" id="HV_DANTOC" placeholder="Kinh" disabled>
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="HV_HOCVAN">Trình độ học vấn:</label>
-                      <div class="input-group">
-                        <select class="form-control" id="HV_HOCVAN" disabled>
-                          <option>1/12</option>
-                          <option>2/12</option>
-                          <option>3/12</option>
-                          <option>4/12</option>
-                          <option>5/12</option>
-                          <option>6/12</option>
-                          <option>7/12</option>
-                          <option>8/12</option>
-                          <option>9/12</option>
-                          <option>10/12</option>
-                          <option>11/12</option>
-                          <option>12/12</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="HV_NGHENGHIEP">Nghề nghiệp:</label>
-                      <input type="text" class="form-control" id="HV_NGHENGHIEP" placeholder="Nghề nghiệp, nơi làm việc hiện tại" disabled>
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="HV_NGAYSINH">Ngày sinh:</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                        </div>
-                        <input type="date" class="form-control" data-inputmask-alias="datetime" id="HV_NGAYSINH" data-inputmask-inputformat="dd/mm/yyyy" data-mask disabled>
-                      </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="HV_GIOITINH">Giới tính:</label>
-                      <div class="input-group">
-                        <select class="form-control" id="HV_GIOITINH" disabled>
-                          <option>Nam</option>
-                          <option>Nữ</option>
-                          <option>Khác</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label for="HV_SDT">Số điện thoại:</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                        </div>
-                        <input type="text" class="form-control" id="HV_SDT" data-inputmask='"mask": "(999) 999-9999"' data-mask disabled>
-                      </div>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="id_DOITUONG">Mã đối tượng:</label>
-                      <select class="form-control" id="id_DOITUONG" disabled>
-                        @foreach ($doituong_all as $doituong)
-                        <option value="{{ $doituong -> DT_MASO}}">{{ $doituong -> DT_TEN }}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                  </div>
-                  <label for="HV_NGUYENQUAN">Nguyên quán:</label>
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <span>Tỉnh/Thành Phố</span>
-                      <select class="form-control " id="nguyenquan_tinh" placeholder="Tỉnh/Thành Phố" disabled>
-                        @foreach ($tinh_all as $tinh)
-                        <option>{{ $tinh -> TEN_TINH }}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <span>Quận/Huyện</span>
-                      <select class="form-control " id="nguyenquan_huyen" placeholder="Quận/Huyên" disabled>
-                        @foreach ($huyen_all as $huyen)
-                        <option>{{ $huyen -> TEN_HUYEN }}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <span>Phường/Xã</span>
-                      <select class="form-control" id="nguyenquan_xa" placeholder="Phường/Xã" disabled>
-                        @foreach ($xa_all as $xa)
-                        <option>{{ $xa -> TEN_XA }}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <span>Địa chỉ</span>
-                    <input type="text" class="form-control" id="HV_DIACHI_NQ" placeholder="Địa chỉ" disabled>
-                  </div>
-                  <label for="HV_THUONGTRU">Hộ khẩu thường trú</label>
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <span>Tỉnh/Thành Phố</span>
-                      <select class="form-control " id="thuongtru_tinh" placeholder="Tỉnh/Thành Phố" disabled>
-                        <option>Mời chọn tỉnh/thành phố</option>
-                        @foreach ($tinh_all as $tinh)
-                        <option>{{ $tinh -> TEN_TINH }}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <span>Quận/Huyện</span>
-                      <select class="form-control js_thuongtru_huyen" id="thuongtru_huyen" placeholder="Quận/Huyên" disabled>
-                        <option>Mời chọn quận/huyện</option>
-                        @foreach ($huyen_all as $huyen)
-                        <option>{{ $huyen -> TEN_HUYEN }}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <span>Phường/Xã</span>
-                      <select class="form-control" id="thuongtru_xa" placeholder="Phường/Xã" disabled>
-                        <option>Mời chọn phường/xã</option>
-                        <option>Mời chọn tỉnh/thành phố</option>
-                        @foreach ($xa_all as $xa)
-                        <option>{{ $xa -> TEN_XA }}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <span>Địa chỉ</span>
-                    <input type="text" class="form-control" id="HV_DIACHI_TT" placeholder="Địa chỉ" disabled>
-                  </div>
-                  <div class="form-group">
-                    <label for="HV_THONGTINMOTA">Thông tin người thân:</label>
-                    <textarea class="form-control" id="HV_THONGTINMOTA" rows="2" disabled></textarea>
-                  </div>
-                  <hr>
-                </div> -->
+
                 <label for="">Chi tiết chứng chỉ</label>
                 <div class="form-row">
                   <table id="" class="table table-bordered table-striped">
@@ -322,7 +203,7 @@
       </div>
     </div>
     <!-- Chỉnh sửa thông tin học viên -->
-    <div class="modal fade" id="editHocVien" tabindex="-1" aria-labelledby="editHocVienModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editHocVien" tabindex="1" aria-labelledby="editHocVienModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -336,24 +217,24 @@
               <!-- sua loi 419 -->
               {{csrf_field()}}
               <div class="card-body">
-                <input type="hidden" class="form-control" id="id_HV" name="id">
+                <input type="hidden" id="id_HV" name="id">
                 <div class="form-group">
-                  <label for="HV_HOTEN">Họ tên học viên</label>
+                  <label for="HV_HOTEN_EDIT">Họ tên học viên</label>
                   <input type="text" class="form-control" id="HV_HOTEN_EDIT" name="HV_HOTEN" placeholder="Tên học viên">
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="HV_CMND">CMND/CCCD:</label>
+                    <label for="HV_CMND_EDIT">CMND/CCCD:</label>
                     <input type="text" class="form-control" id="HV_CMND_EDIT" name="HV_CMND" placeholder="CMND/CCCD">
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="HV_DANTOC">Dân tộc:</label>
+                    <label for="HV_DANTOC_EDIT">Dân tộc:</label>
                     <input type="text" class="form-control" id="HV_DANTOC_EDIT" name="HV_DANTOC" placeholder="Kinh">
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="HV_HOCVAN">Trình độ học vấn:</label>
+                    <label for="HV_HOCVAN_EDIT">Trình độ học vấn:</label>
                     <div class="input-group">
                       <select class="form-control" id="HV_HOCVAN_EDIT" name="HV_HOCVAN">
                         <option>1/12</option>
@@ -373,13 +254,14 @@
                     </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="HV_NGHENGHIEP">Nghề nghiệp:</label>
+                    <label for="HV_NGHENGHIEP_EDIT">Nghề nghiệp:</label>
                     <input type="text" class="form-control" id="HV_NGHENGHIEP_EDIT" name="HV_NGHENGHIEP" placeholder="Nghề nghiệp, nơi làm việc hiện tại">
+                    <input type="hidden" id="id_CONGVIEC_EDIT" name="id_CONGVIEC">
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
-                    <label for="HV_NGAYSINH">Ngày sinh:</label>
+                    <label for="HV_NGAYSINH_EDIT">Ngày sinh:</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
@@ -388,7 +270,7 @@
                     </div>
                   </div>
                   <div class="form-group col-md-6">
-                    <label for="HV_GIOITINH">Giới tính:</label>
+                    <label for="HV_GIOITINH_EDIT">Giới tính:</label>
                     <div class="input-group">
                       <select class="form-control" id="HV_GIOITINH_EDIT" name="HV_GIOITINH">
                         <option>Nam</option>
@@ -477,14 +359,30 @@
                   </div>
                 </div>
                 <div class="form-group">
+
                   <span>Địa chỉ</span>
                   <input type="text" class="form-control" id="HV_DIACHI_TT_EDIT" name="HV_DIACHI_TT" placeholder="Địa chỉ">
                   <input type="hidden" id="id_HV_DIACHI_TT_EDIT" name="id_HV_DIACHI_TT">
                 </div>
+
                 <div class="form-group">
-                  <label for="HV_THONGTINMOTA">Thông tin người thân:</label>
-                  <textarea class="form-control" id="HV_THONGTINMOTA" name="HV_THONGTINMOTA_EDIT" rows="2"></textarea>
+                     <label for="NGUOIQUEN_EDIT">Thông tin người quen</label>
+                  <div class="form-group">
+               <span>Họ tên:</span>
+                  <textarea class="form-control" id="NGUOIQUEN_EDIT" name="HV_THONGTINMOTA" rows="1"></textarea>
+                  <input type="hidden" id="id_NGUOIQUEN_EDIT" name="id_NGUOIQUEN">
                 </div>
+                 <span>Số điện thoại:</span>
+                  <textarea class="form-control" id="NGUOIQUEN_SDT_EDIT" name="HV_THONGTINMOTA1" rows="1"></textarea>
+                  <input type="hidden" id="id_NGUOIQUEN_SDT_EDIT" name="id_NGUOIQUEN1">
+                </div>
+                 
+                 <div class="form-group">
+                <span>Địa chỉ</span>
+                  <textarea class="form-control" id="NGUOIQUEN_DIACHI_EDIT" name="HV_THONGTINMOTA2" rows="2"></textarea>
+                  <input type="hidden" id="id_NGUOIQUEN_DIACHI_EDIT" name="id_NGUOIQUEN2">
+                </div>
+
               </div>
               <div class="modal-footer justify-content-between">
                 <div class="col-auto">

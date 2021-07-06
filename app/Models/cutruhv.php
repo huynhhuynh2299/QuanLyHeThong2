@@ -21,4 +21,7 @@ class cutruhv extends Model
     {
         return $this->belongsTo("App\\Models\\xa", "id_XA", "id");
     }
+    public function thuoc_hocvien(){
+        return $this->belongsTo("App\\Models\\hocvien","id_HOCVIEN","id");
+    }
 }

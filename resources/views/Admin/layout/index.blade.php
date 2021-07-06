@@ -1,20 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hệ Thống Quản Lý Đào Tạo</title>
-   <style>
-     .TEN{
-          font-family: Verdana;
-    text-align: center;
-    color: #47098e;
-    /* color: #FCC40F; */
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
-     }
-   </style>
+  <style>
+    .TEN {
+      font-family: Verdana;
+      text-align: center;
+      color: #47098e;
+      /* color: #FCC40F; */
+      font-size: 1em;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .container {
+      position: relative;
+      width: 50%;
+    }
+
+    .image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #008CBA;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+      transform: scale(0);
+      -webkit-transition: .3s ease;
+      transition: .3s ease;
+    }
+
+    .container:hover .overlay {
+      -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+      transform: scale(1);
+    }
+
+    .text {
+      color: white;
+      font-size: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+  </style>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -25,8 +75,8 @@
   <link rel="stylesheet" href="{{asset('frontend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('frontend/css/adminlte.min.css')}}">
- 
- <link rel="stylesheet" href="{{asset('frontend/plugins/fontawesome-free/css/all.min.css')}}">
+
+  <link rel="stylesheet" href="{{asset('frontend/plugins/fontawesome-free/css/all.min.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/dist/css/adminlte.min.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/plugins/fontawesome-free/css/all.min.css')}}">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -41,12 +91,22 @@
 
 
 </head>
+
 <body class="hold-transition sidebar-mini">
 
   <!-- /.navbar -->
+  <?php
+  $check_login = Session()->get('id_USER');
 
+  if (!$check_login) {
+    header("refresh:0; url= login");
+    die();
+  }
+
+  ?>
 
   @include('Admin.layout.header')
+
   @include('Admin.layout.menu')
 
   @yield('content');
@@ -58,19 +118,14 @@
 
 
 
-  <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </a>
 
   <!-- /.content-wrapper -->
 
 
 
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.1.0
-    </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+
+    <strong>TRUNG TÂM DỊCH VỤ VIỆC LÀM CẦN THƠ <a href="https://adminlte.io"></a>.</strong>
   </footer>
 
   <!-- Control Sidebar -->
@@ -115,7 +170,7 @@
         "responsive": true,
         "lengthChange": false,
         "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        "buttons": ["excel", "pdf", "print"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
       $('#example2').DataTable({
         "paging": true,
@@ -345,4 +400,5 @@
   @yield('script')
   <script src="{{asset('frontend/js/pages/QuanLyHocVien.js')}}"></script>
 </body>
+
 </html>

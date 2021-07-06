@@ -20,4 +20,13 @@ class huyen extends Model
     public function lay_xa(){
         return $this->hasMany("App\\Models\\xa","id_HUYEN","id");
     }
+    public function lay_cutruhv(){
+        return $this->hasManyThrough(
+            'App\\Models\\cutruhv',
+            'App\\Models\\xa',
+            'id_HUYEN',
+            'id_XA',
+            'id','id'
+        );
+    }
 }
