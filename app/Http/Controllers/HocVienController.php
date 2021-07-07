@@ -961,4 +961,5 @@ Dự kiến thời gian kết thúc khóa học vào ngày ' . $ngaykt . ' thán
     {
         return view('Admin.QuanLyHocVien.ThanhLichSu');
     }
+    public function print_form_ket_qua_tot_nghiep()
 }

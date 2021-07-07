@@ -30,6 +30,7 @@ Route::post('user/add', 'UserController@add');
 Route::get('user/{id}/xoa', 'UserController@xoa');
 // lọc
 Route::get('danhsachuser/filter', 'UserController@filterDanhSach');
+
 // Quản lý loại người dùng
 Route::get('danhsachloaiuser', 'LoaiUserController@getDanhSach');
 Route::get('themloaiuser', 'LoaiUserController@getThem');
@@ -38,6 +39,13 @@ Route::post('loaiuser/edit', 'LoaiUserController@edit');
 Route::post('loaiuser/add', 'LoaiUserController@add');
 Route::get('loaiuser/{id}/xoa', 'LoaiUserController@xoa');
 
+// Quản lý loại hình đào tạo
+Route::get('danhsachLHDT', 'LHDTController@getDanhSach');
+Route::get('themLHDT', 'LHDTController@getThem');
+Route::get('LHDT/{id}', 'LHDTController@getByID');
+Route::post('LHDT/edit', 'LHDTController@edit');
+Route::post('LHDT/add', 'LHDTController@add');
+Route::get('LHDT/{id}/xoa', 'LHDTController@xoa');
 
 
 

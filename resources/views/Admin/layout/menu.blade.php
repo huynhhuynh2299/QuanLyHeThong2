@@ -185,18 +185,11 @@
             </a>
             <ul class="nav nav-treeview" style="margin-left: 20px;">
               <li class="nav-item">
-                <a href="danhsachhocvien" class="nav-link">
+                <a href="danhsachLHDT" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách loại hình đạo</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="themhocvien" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Thêm học loại hình đạo</p>
-                </a>
-              </li>
-
             </ul>
           </li>
           <li class="nav-item">

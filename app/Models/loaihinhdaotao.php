@@ -10,4 +10,5 @@ class loaihinhdaotao extends Model
     use HasFactory;
     protected $table = "loaihinhdaotao";
     public $timestamps = false;
+    protected $fillable = ['LH_TEN'];
 }
