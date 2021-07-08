@@ -64,10 +64,4 @@ class LHDTController extends Controller
 
         return Redirect::to('danhsachLHDT');
     }
-
-    public function xoa($id)
-    {
-        loaihinhdaotao::find($id)->delete();
-        return Redirect::to('danhsachLHDT');
-    }
 }

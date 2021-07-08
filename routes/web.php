@@ -45,7 +45,6 @@ Route::get('themLHDT', 'LHDTController@getThem');
 Route::get('LHDT/{id}', 'LHDTController@getByID');
 Route::post('LHDT/edit', 'LHDTController@edit');
 Route::post('LHDT/add', 'LHDTController@add');
-Route::get('LHDT/{id}/xoa', 'LHDTController@xoa');
 
 
 

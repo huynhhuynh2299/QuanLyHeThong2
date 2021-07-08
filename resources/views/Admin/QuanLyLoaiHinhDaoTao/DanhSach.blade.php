@@ -53,10 +53,6 @@
                 <i class="fas fa-pencil-alt">
                 </i>
               </a>
-              <a class="btn btn-danger btn-sm" href="LHDT/{{$LHDT -> id}}/xoa">
-                <i class="fas fa-trash">
-                </i>
-              </a>
             </td>
           </tr>
           @endforeach
